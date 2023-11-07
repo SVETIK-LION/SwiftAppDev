@@ -20,7 +20,7 @@ final class DarkTheme: AppTheme {
     var textColor: UIColor = .white
 }
 
-final class BlueTheme: AppTheme {
-    var backgroundColor: UIColor = .blue
+final class PinkTheme: AppTheme {
+    var backgroundColor: UIColor = .systemPink
     var textColor: UIColor = .white
 }

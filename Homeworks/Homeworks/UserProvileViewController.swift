@@ -10,7 +10,7 @@ final class UserProfileViewController: UIViewController {
     
     private var lightThemeButton = UIButton()
     
-    private var blueThemeButton = UIButton()
+    private var pinkThemeButton = UIButton()
     
     private var userName: UILabel = {
         let label = UILabel()
@@ -29,7 +29,7 @@ final class UserProfileViewController: UIViewController {
         setupConstraints()
         setupButton(button: &darkThemeButton, label: "Dark theme")
         setupButton(button: &lightThemeButton, label: "Light theme")
-        setupButton(button: &blueThemeButton, label: "Blue theme")
+        setupButton(button: &pinkThemeButton, label: "Pink theme")
         setupButtonsTarget()
         networkService.getUserProfile {[weak self] userProfile in
             self?.userProfile = userProfile
@@ -50,7 +50,7 @@ final class UserProfileViewController: UIViewController {
         view.addSubview(userProfilePhoto)
         view.addSubview(darkThemeButton)
         view.addSubview(lightThemeButton)
-        view.addSubview(blueThemeButton)
+        view.addSubview(pinkThemeButton)
     }
     
     private func setupConstraints(){
@@ -58,7 +58,7 @@ final class UserProfileViewController: UIViewController {
         userProfilePhoto.translatesAutoresizingMaskIntoConstraints = false
         darkThemeButton.translatesAutoresizingMaskIntoConstraints = false
         lightThemeButton.translatesAutoresizingMaskIntoConstraints = false
-        blueThemeButton.translatesAutoresizingMaskIntoConstraints = false
+        pinkThemeButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             userName.centerYAnchor.constraint(equalTo: userProfilePhoto.centerYAnchor),
@@ -76,8 +76,8 @@ final class UserProfileViewController: UIViewController {
             lightThemeButton.topAnchor.constraint(equalTo: darkThemeButton.bottomAnchor, constant: 50),
             lightThemeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            blueThemeButton.topAnchor.constraint(equalTo: lightThemeButton.bottomAnchor, constant: 50),
-            blueThemeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            pinkThemeButton.topAnchor.constraint(equalTo: lightThemeButton.bottomAnchor, constant: 50),
+            pinkThemeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
     
@@ -90,7 +90,7 @@ final class UserProfileViewController: UIViewController {
     private func setupButtonsTarget(){
         darkThemeButton.addTarget(self, action: #selector(clickOnButtonDark), for: .touchUpInside)
         lightThemeButton.addTarget(self, action: #selector(clickOnButtonLight), for: .touchUpInside)
-        blueThemeButton.addTarget(self, action: #selector(clickOnButtonBlue), for: .touchUpInside)
+        pinkThemeButton.addTarget(self, action: #selector(clickOnButtonPink), for: .touchUpInside)
     }
     
     private func setUserProfileViewConfiguration(userModel: FriendModel){
@@ -118,8 +118,8 @@ final class UserProfileViewController: UIViewController {
         view.backgroundColor = ColorTheme.currentTheme.backgroundColor
     }
     
-    @objc func clickOnButtonBlue(){
-        ColorTheme.currentTheme = BlueTheme()
+    @objc func clickOnButtonPink(){
+        ColorTheme.currentTheme = PinkTheme()
         view.backgroundColor = ColorTheme.currentTheme.backgroundColor
     }
 }
